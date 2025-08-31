@@ -1,26 +1,61 @@
-@import "tailwindcss";
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #2F89FC; /* Bright Blue */
+  --secondary: #30E3CA; /* Cyan */
+  --background: #FFFFFF; /* Light mode background */
+  --text: #40514E; /* Dark Teal for text */
+  --surface: #F5F5F5; /* Light mode cards, secondary bg */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="dark"] {
+  --primary: #2F89FC;
+  --secondary: #30E3CA;
+  --background: #1A202C; /* Dark mode background */
+  --text: #E2E8F0; /* Light text for dark mode */
+  --surface: #2D3748; /* Dark mode cards */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Roboto', sans-serif; /* Matches MUI default */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Ensure MUI components use theme colors */
+.MuiButton-containedPrimary {
+  background-color: var(--primary) !important;
+}
+.MuiButton-containedPrimary:hover {
+  background-color: #1B6AD9 !important; /* Darker shade of primary */
+}
+.MuiTypography-root {
+  color: var(--text);
+}
+.MuiCard-root {
+  background-color: var(--surface);
+}
+
+/* AdSense placeholder styling */
+.adsbygoogle {
+  background-color: var(--surface);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
 }
